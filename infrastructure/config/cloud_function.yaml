@@ -1,0 +1,20 @@
+name: wellnow-etl-pipeline
+runtime: python311
+entry_point: run_pipeline
+trigger:
+  type: http
+  allow_unauthenticated: true
+resources:
+  memory: 512MB
+  timeout: 540s
+environment_variables:
+  GCP_PROJECT_ID: "${GCP_PROJECT_ID}"
+  BQ_DATASET_ID: "people_analytics"
+  HRIS_API_URL: "${HRIS_API_URL}"
+  GCS_STAGING_BUCKET: "${GCS_STAGING_BUCKET}"
+  GCS_DASHBOARD_BUCKET: "${GCS_DASHBOARD_BUCKET}"
+  PIPELINE_LOG_LEVEL: "INFO"
+secret_environment_variables:
+  - key: HRIS_API_KEY
+    secret: hris-api-key
+    version: latest

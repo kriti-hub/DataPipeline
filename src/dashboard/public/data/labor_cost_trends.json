@@ -1,0 +1,110 @@
+[
+  {
+    "month": "2024-08",
+    "total_labor": 6739680.0,
+    "total_visits": 131635,
+    "cost_per_visit": 51.2
+  },
+  {
+    "month": "2024-09",
+    "total_labor": 6591240.0,
+    "total_visits": 138089,
+    "cost_per_visit": 47.73
+  },
+  {
+    "month": "2024-10",
+    "total_labor": 6863508.0,
+    "total_visits": 150841,
+    "cost_per_visit": 45.5
+  },
+  {
+    "month": "2024-11",
+    "total_labor": 6947796.0,
+    "total_visits": 168272,
+    "cost_per_visit": 41.29
+  },
+  {
+    "month": "2024-12",
+    "total_labor": 7323192.0,
+    "total_visits": 182779,
+    "cost_per_visit": 40.07
+  },
+  {
+    "month": "2025-01",
+    "total_labor": 7211388.0,
+    "total_visits": 177063,
+    "cost_per_visit": 40.73
+  },
+  {
+    "month": "2025-02",
+    "total_labor": 6415060.0,
+    "total_visits": 153709,
+    "cost_per_visit": 41.74
+  },
+  {
+    "month": "2025-03",
+    "total_labor": 6919004.0,
+    "total_visits": 155017,
+    "cost_per_visit": 44.63
+  },
+  {
+    "month": "2025-04",
+    "total_labor": 6626248.0,
+    "total_visits": 141477,
+    "cost_per_visit": 46.84
+  },
+  {
+    "month": "2025-05",
+    "total_labor": 6813780.0,
+    "total_visits": 138817,
+    "cost_per_visit": 49.08
+  },
+  {
+    "month": "2025-06",
+    "total_labor": 6563268.0,
+    "total_visits": 126886,
+    "cost_per_visit": 51.73
+  },
+  {
+    "month": "2025-07",
+    "total_labor": 6790540.0,
+    "total_visits": 126356,
+    "cost_per_visit": 53.74
+  },
+  {
+    "month": "2025-08",
+    "total_labor": 6748700.0,
+    "total_visits": 131605,
+    "cost_per_visit": 51.28
+  },
+  {
+    "month": "2025-09",
+    "total_labor": 6609956.0,
+    "total_visits": 138553,
+    "cost_per_visit": 47.71
+  },
+  {
+    "month": "2025-10",
+    "total_labor": 6868396.0,
+    "total_visits": 151103,
+    "cost_per_visit": 45.46
+  },
+  {
+    "month": "2025-11",
+    "total_labor": 6928228.0,
+    "total_visits": 167165,
+    "cost_per_visit": 41.45
+  },
+  {
+    "month": "2025-12",
+    "total_labor": 7315448.0,
+    "total_visits": 183393,
+    "cost_per_visit": 39.89
+  },
+  {
+    "month": "2026-01",
+    "total_labor": 7249696.0,
+    "total_visits": 177704,
+    "cost_per_visit": 40.8
+  }
+]

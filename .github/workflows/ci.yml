@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  lint-and-test-python:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11"]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install API dependencies
+        run: |
+          pip install -r src/api/requirements.txt -r src/api/requirements-dev.txt
+      - name: Install ETL dependencies
+        run: |
+          pip install -r src/etl/requirements.txt -r src/etl/requirements-dev.txt
+      - name: Lint with ruff
+        run: |
+          ruff check src/api/ src/etl/
+          ruff format --check src/api/ src/etl/
+      - name: Test API
+        run: python -m pytest src/api/tests/ -v --tb=short
+      - name: Test ETL
+        run: python -m pytest src/etl/tests/ -v --tb=short
+
+  lint-and-build-dashboard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: src/dashboard/package-lock.json
+      - name: Install dependencies
+        run: cd src/dashboard && npm ci
+      - name: Lint
+        run: cd src/dashboard && npx eslint src/
+      - name: Build
+        run: cd src/dashboard && npm run build

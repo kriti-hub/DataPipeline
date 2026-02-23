@@ -1,0 +1,208 @@
+# =============================================================================
+# WellNow Staffing Analytics — Data Quality Rules
+# =============================================================================
+# All 15 DQ rules externalized for the ETL validate.py module.
+# Severity levels: Critical, High, Medium, Low
+# Actions: quarantine (reject record), flag (allow through with warning), alert (notify)
+# =============================================================================
+
+rules:
+  # ---------------------------------------------------------------------------
+  # Null Checks
+  # ---------------------------------------------------------------------------
+  - rule_id: DQ-001
+    check_type: null_check
+    table_name: dim_employee
+    field_name: employee_id
+    rule_definition: "employee_id IS NOT NULL"
+    description: "Employee ID must not be null — required for all joins and lookups"
+    severity: Critical
+    action: quarantine
+
+  - rule_id: DQ-002
+    check_type: null_check
+    table_name: dim_employee
+    field_name: hire_date
+    rule_definition: "hire_date IS NOT NULL"
+    description: "Hire date must not be null — required for tenure calculations"
+    severity: Critical
+    action: quarantine
+
+  - rule_id: DQ-003
+    check_type: null_check
+    table_name: dim_employee
+    field_name: role_type
+    rule_definition: "role_type IS NOT NULL"
+    description: "Role type must not be null — required for staffing classification"
+    severity: Critical
+    action: quarantine
+
+  # ---------------------------------------------------------------------------
+  # Uniqueness
+  # ---------------------------------------------------------------------------
+  - rule_id: DQ-004
+    check_type: uniqueness
+    table_name: dim_employee
+    field_name: employee_id
+    rule_definition: "employee_id unique per is_current=TRUE"
+    description: "No duplicate active employee records — only one current row per employee"
+    severity: Critical
+    action: quarantine
+
+  # ---------------------------------------------------------------------------
+  # Referential Integrity
+  # ---------------------------------------------------------------------------
+  - rule_id: DQ-005
+    check_type: referential_integrity
+    table_name: dim_employee
+    field_name: location_key
+    reference_table: dim_location
+    reference_field: location_key
+    rule_definition: "location_key EXISTS in dim_location"
+    description: "Every employee must reference a valid location"
+    severity: High
+    action: quarantine
+
+  - rule_id: DQ-006
+    check_type: referential_integrity
+    table_name: dim_employee
+    field_name: manager_employee_id
+    reference_table: dim_employee
+    reference_field: employee_id
+    rule_definition: "manager_employee_id EXISTS in employee set (or NULL for top-level)"
+    description: "Manager reference must point to a valid employee or be null"
+    severity: High
+    action: flag
+
+  # ---------------------------------------------------------------------------
+  # Range Checks
+  # ---------------------------------------------------------------------------
+  - rule_id: DQ-007
+    check_type: range
+    table_name: fact_daily_staffing
+    field_name: patient_visits
+    min_value: 0
+    max_value: null
+    rule_definition: "patient_visits >= 0"
+    description: "Patient visit count cannot be negative"
+    severity: High
+    action: quarantine
+
+  - rule_id: DQ-008
+    check_type: range
+    table_name: fact_daily_staffing
+    field_name: coverage_score
+    min_value: 0
+    max_value: 3.0
+    rule_definition: "coverage_score BETWEEN 0 AND 3.0"
+    description: "Coverage score outside 0-3.0 indicates data error"
+    severity: Medium
+    action: flag
+
+  - rule_id: DQ-009
+    check_type: range
+    table_name: fact_daily_staffing
+    field_name: overtime_hours
+    min_value: 0
+    max_value: 24
+    rule_definition: "overtime_hours >= 0 AND <= 24"
+    description: "Overtime hours must be non-negative and cannot exceed 24 hours in a day"
+    severity: High
+    action: quarantine
+
+  # ---------------------------------------------------------------------------
+  # Consistency Checks
+  # ---------------------------------------------------------------------------
+  - rule_id: DQ-010
+    check_type: consistency
+    table_name: dim_employee
+    rule_definition: "IF status='Active' THEN termination_date IS NULL"
+    description: "Active employees should not have a termination date"
+    fields:
+      - status
+      - termination_date
+    condition_field: status
+    condition_value: "Active"
+    expected_field: termination_date
+    expected_value: null
+    severity: High
+    action: flag
+
+  - rule_id: DQ-011
+    check_type: consistency
+    table_name: dim_employee
+    rule_definition: "IF status='Terminated' THEN termination_date IS NOT NULL"
+    description: "Terminated employees must have a termination date"
+    fields:
+      - status
+      - termination_date
+    condition_field: status
+    condition_value: "Terminated"
+    expected_field: termination_date
+    expected_null: false
+    severity: High
+    action: flag
+
+  # ---------------------------------------------------------------------------
+  # Freshness
+  # ---------------------------------------------------------------------------
+  - rule_id: DQ-012
+    check_type: freshness
+    table_name: fact_daily_staffing
+    field_name: snapshot_date
+    rule_definition: "MAX(snapshot_date) within 2 days of CURRENT_DATE"
+    description: "Staffing data must be no more than 2 days old"
+    max_staleness_days: 2
+    severity: Critical
+    action: alert
+
+  # ---------------------------------------------------------------------------
+  # Volume
+  # ---------------------------------------------------------------------------
+  - rule_id: DQ-013
+    check_type: volume
+    table_name: dim_employee
+    rule_definition: "Row count within 10% of previous run"
+    description: "Sudden large changes in employee count indicate data issues"
+    variance_threshold: 0.10
+    severity: High
+    action: alert
+
+  # ---------------------------------------------------------------------------
+  # Format
+  # ---------------------------------------------------------------------------
+  - rule_id: DQ-014
+    check_type: format
+    table_name: dim_employee
+    field_name: email
+    rule_definition: "email LIKE '%@wellnow.com'"
+    description: "Employee emails should use the wellnow.com domain"
+    pattern: "^.+@wellnow\\.com$"
+    severity: Low
+    action: flag
+
+  # ---------------------------------------------------------------------------
+  # Cross-table
+  # ---------------------------------------------------------------------------
+  - rule_id: DQ-015
+    check_type: cross_table
+    table_name: fact_daily_staffing
+    reference_table: dim_location
+    rule_definition: "Every active location in dim_location has >= 1 staffing record per day"
+    description: "All active locations should have daily staffing data"
+    severity: Medium
+    action: alert
+
+# =============================================================================
+# Quality Scoring Configuration
+# =============================================================================
+scoring:
+  weights:
+    Critical: 0.40
+    High: 0.30
+    Medium: 0.20
+    Low: 0.10
+  thresholds:
+    healthy: 0.95
+    warning: 0.85
+    # Below 0.85 = Alert

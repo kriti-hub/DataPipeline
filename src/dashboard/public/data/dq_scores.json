@@ -1,0 +1,11 @@
+{
+  "overall_score": 1.0,
+  "severity_scores": {
+    "Critical": 1.0,
+    "High": 1.0,
+    "Medium": 1.0,
+    "Low": 1.0
+  },
+  "total_checks": 15,
+  "status": "Healthy"
+}

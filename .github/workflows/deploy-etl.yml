@@ -1,0 +1,25 @@
+name: Deploy ETL Pipeline
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "src/etl/**"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Authenticate to GCP
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.WIF_PROVIDER }}
+          service_account: ${{ secrets.WIF_SERVICE_ACCOUNT }}
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+      - name: Deploy to Cloud Functions
+        run: bash infrastructure/scripts/deploy_etl.sh

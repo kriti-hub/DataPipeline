@@ -1,0 +1,30 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: wellnow-hris-api
+  labels:
+    app: wellnow-staffing-analytics
+    component: hris-api
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/maxScale: "1"
+        run.googleapis.com/cpu-throttling: "true"
+    spec:
+      containerConcurrency: 80
+      timeoutSeconds: 60
+      containers:
+        - image: gcr.io/${GCP_PROJECT_ID}/wellnow-hris-api:latest
+          ports:
+            - containerPort: 8000
+          resources:
+            limits:
+              memory: 256Mi
+              cpu: "1"
+          env:
+            - name: HRIS_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: hris-api-key
+                  key: latest

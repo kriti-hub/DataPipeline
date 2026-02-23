@@ -1,0 +1,59 @@
+# =============================================================================
+# WellNow Staffing Analytics — ETL Pipeline Configuration
+# =============================================================================
+# Environment variables are interpolated at runtime using ${VAR_NAME} syntax.
+# =============================================================================
+
+source:
+  base_url: "${HRIS_API_URL}"
+  api_key: "${HRIS_API_KEY}"
+  page_size: 500
+  max_retries: 3
+  timeout_seconds: 30
+  endpoints:
+    - workers
+    - schedules
+    - patient-volume
+    - locations
+    - terminations
+
+destination:
+  project_id: "${GCP_PROJECT_ID}"
+  dataset_id: "people_analytics"
+  staging_bucket: "${GCS_STAGING_BUCKET}"
+  dashboard_bucket: "${GCS_DASHBOARD_BUCKET}"
+
+pipeline:
+  run_mode: "full"  # or "incremental"
+  lookback_days: 7
+  enable_quarantine: true
+  log_level: "INFO"
+
+quality:
+  rules_file: "config/quality_rules.yaml"
+  fail_pipeline_on_critical: true
+  warn_threshold: 0.95
+  alert_threshold: 0.85
+
+load:
+  dimensions:
+    write_disposition: "WRITE_TRUNCATE"
+    tables:
+      - dim_employee
+      - dim_location
+      - dim_job
+  facts:
+    write_disposition: "WRITE_APPEND"
+    tables:
+      - fact_daily_staffing
+      - fact_shift_gap
+
+export:
+  dashboard_json_files:
+    - kpis.json
+    - staffing_coverage.json
+    - shift_gaps.json
+    - overtime_hotspots.json
+    - labor_cost_trends.json
+    - pipeline_runs.json
+    - dq_scores.json

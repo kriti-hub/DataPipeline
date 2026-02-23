@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(echo:*)",
+      "Bash(python -c \"open\\(r''C:\\\\Users\\\\anshu\\\\OneDrive\\\\Desktop\\\\Claude Code Projects\\\\DataPipeline\\\\src\\\\__init__.py'', ''w''\\).close\\(\\)\")",
+      "Bash(pip install:*)",
+      "Bash(python -m pytest:*)",
+      "Bash(python:*)",
+      "Bash(set LOCAL_MODE=true)",
+      "Bash(set:*)",
+      "Bash(set HRIS_API_KEY=dev-api-key-change-me:*)",
+      "Bash(set GCS_STAGING_BUCKET=test-staging)",
+      "Bash(timeout:*)",
+      "Bash(curl:*)",
+      "Bash(LOCAL_MODE=true HRIS_API_URL=http://127.0.0.1:8099 HRIS_API_KEY=dev-api-key-change-me GCP_PROJECT_ID=test-project GCS_STAGING_BUCKET=test-staging GCS_DASHBOARD_BUCKET=test-dashboard python:*)",
+      "Bash(cmd.exe:*)",
+      "Bash(wc:*)",
+      "Bash(gcloud config set:*)",
+      "WebFetch(domain:wellnow-hris-api-3vhsvfwxyq-uc.a.run.app)",
+      "Bash(powershell -Command:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run build:*)"
+    ]
+  }
+}

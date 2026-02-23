@@ -1,0 +1,58 @@
+# Secrets — NEVER commit
+.env
+.env.local
+.env.production
+*.key
+*.pem
+service-account*.json
+credentials*.json
+
+# Data files — NEVER commit raw data
+*.csv
+*.json.gz
+data/raw/
+data/staging/
+data/local_output/
+
+# Keep dashboard data (small pre-computed JSON)
+!src/dashboard/public/data/*.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+.eggs/
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Node
+node_modules/
+dist/
+.vercel/
+.next/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# GCP
+.gcloud/
+
+# Build artifacts
+build/
+*.whl
+*.tar.gz
