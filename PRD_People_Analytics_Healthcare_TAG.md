@@ -52,7 +52,6 @@ TAG is one of the largest retail healthcare support organizations in the U.S.:
 
 A simulated multi-location urgent care staffing environment that models realistic workforce data, runs real Python ETL into BigQuery on GCP, and serves live operational analytics through an interactive React dashboard — all within GCP's free tier ($0/month).
 
-**Core Message:** *"I built the exact data infrastructure this role requires — a working pipeline from HRIS to BigQuery with multi-location staffing intelligence, coverage gap analysis, and labor cost optimization — as a solo project, using the tools TAG uses (BigQuery, SQL, data visualization)."*
 
 ---
 
