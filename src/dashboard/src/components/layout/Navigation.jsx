@@ -28,7 +28,7 @@ export default function Navigation() {
               </svg>
             </div>
             <span className="font-bold text-gray-900 text-lg hidden sm:block">
-              WellNow Analytics
+              Staffing Analytics
             </span>
           </Link>
 

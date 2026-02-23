@@ -10,6 +10,8 @@ import {
 } from "recharts";
 import { REGION_COLORS } from "../../utils/constants";
 import { formatNumber } from "../../utils/formatters";
+import InfoTooltip from "../ui/InfoTooltip";
+import KeyTakeaway from "../ui/KeyTakeaway";
 
 function getBarColor(hours) {
   if (hours >= 2000) return "#dc2626";
@@ -34,13 +36,20 @@ export default function OvertimeWaterfall({ data }) {
 
   const chartData = data.map((d) => ({
     ...d,
-    shortName: d.location_name.replace("WellNow ", ""),
+    shortName: d.location_name.replace(/^(WellNow|HC)\s+/i, ""),
   }));
 
   return (
     <div className="card p-5">
-      <h3 className="text-lg font-semibold text-gray-900 mb-1">Overtime Hotspots</h3>
-      <p className="text-sm text-gray-500 mb-4">Top 15 locations by total overtime hours</p>
+      <div className="flex items-center gap-2 mb-1">
+        <h3 className="text-lg font-semibold text-gray-900">Overtime Hotspots</h3>
+        <InfoTooltip text="Ranks the top 15 locations by total overtime hours. Overtime is calculated as hours worked beyond standard shift length (8 hours). Red bars indicate locations with 2,000+ overtime hours - a strong signal of chronic understaffing." />
+      </div>
+      <p className="text-sm text-gray-500 mb-3">Top 15 locations by total overtime hours</p>
+      <KeyTakeaway
+        insight="A small number of locations account for a disproportionate share of overtime costs, following a Pareto pattern."
+        recommendation="Focus hiring efforts on the top 5 overtime locations. Adding 1-2 FTEs at each could eliminate 60-70% of total overtime spend."
+      />
       <div className="flex flex-wrap gap-3 mb-4 text-xs text-gray-600">
         <span className="flex items-center gap-1"><span className="w-3 h-3 rounded" style={{ backgroundColor: "#dc2626" }} /> &ge; 2,000 hrs</span>
         <span className="flex items-center gap-1"><span className="w-3 h-3 rounded" style={{ backgroundColor: "#f97316" }} /> 1,500 - 2,000</span>

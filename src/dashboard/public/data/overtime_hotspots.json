@@ -2,91 +2,91 @@
   {
     "location_key": 12,
     "total_overtime": 2564.7,
-    "location_name": "WellNow New York City 12",
+    "location_name": "HC New York City 12",
     "region": "Northeast"
   },
   {
     "location_key": 68,
     "total_overtime": 1990.2,
-    "location_name": "WellNow Richmond 68",
+    "location_name": "HC Richmond 68",
     "region": "Southeast"
   },
   {
     "location_key": 25,
     "total_overtime": 1969.0,
-    "location_name": "WellNow Philadelphia 25",
+    "location_name": "HC Philadelphia 25",
     "region": "Northeast"
   },
   {
     "location_key": 9,
     "total_overtime": 1896.5,
-    "location_name": "WellNow New York City 9",
+    "location_name": "HC New York City 9",
     "region": "Northeast"
   },
   {
     "location_key": 17,
     "total_overtime": 1885.7,
-    "location_name": "WellNow Newark 17",
+    "location_name": "HC Newark 17",
     "region": "Northeast"
   },
   {
     "location_key": 80,
     "total_overtime": 1828.2,
-    "location_name": "WellNow Phoenix 80",
+    "location_name": "HC Phoenix 80",
     "region": "Southwest"
   },
   {
     "location_key": 34,
     "total_overtime": 1819.4,
-    "location_name": "WellNow Boston 34",
+    "location_name": "HC Boston 34",
     "region": "Northeast"
   },
   {
     "location_key": 74,
     "total_overtime": 1786.9,
-    "location_name": "WellNow Orlando 74",
+    "location_name": "HC Orlando 74",
     "region": "Southeast"
   },
   {
     "location_key": 36,
     "total_overtime": 1638.1,
-    "location_name": "WellNow Boston 36",
+    "location_name": "HC Boston 36",
     "region": "Northeast"
   },
   {
     "location_key": 70,
     "total_overtime": 1356.2,
-    "location_name": "WellNow Richmond 70",
+    "location_name": "HC Richmond 70",
     "region": "Southeast"
   },
   {
     "location_key": 73,
     "total_overtime": 1181.2,
-    "location_name": "WellNow Charlotte 73",
+    "location_name": "HC Charlotte 73",
     "region": "Southeast"
   },
   {
     "location_key": 56,
     "total_overtime": 793.8,
-    "location_name": "WellNow Detroit 56",
+    "location_name": "HC Detroit 56",
     "region": "Midwest"
   },
   {
     "location_key": 53,
     "total_overtime": 791.3,
-    "location_name": "WellNow Cleveland 53",
+    "location_name": "HC Cleveland 53",
     "region": "Midwest"
   },
   {
     "location_key": 62,
     "total_overtime": 665.8,
-    "location_name": "WellNow Bloomington 62",
+    "location_name": "HC Bloomington 62",
     "region": "Midwest"
   },
   {
     "location_key": 10,
     "total_overtime": 648.9,
-    "location_name": "WellNow Buffalo 10",
+    "location_name": "HC Buffalo 10",
     "region": "Northeast"
   }
 ]

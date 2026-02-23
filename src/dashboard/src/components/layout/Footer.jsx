@@ -5,16 +5,16 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="text-center sm:text-left">
             <p className="text-sm">
-              <span className="text-white font-semibold">WellNow Staffing Analytics</span>
-              {" "}&mdash; People Analytics POC
+              <span className="text-white font-semibold">Staffing Analytics</span>
+              {" "}- People Analytics POC
             </p>
             <p className="text-xs mt-1">
-              Built by Kriti Srivastava &middot; Senior Analyst Candidate &middot; TAG / WellNow Urgent Care
+              Built by Kriti Srivastava &middot; Senior Analyst Candidate
             </p>
           </div>
           <div className="flex items-center gap-4 text-sm">
             <a
-              href="https://github.com/kriti-srivastava/DataPipeline"
+              href="https://github.com/kriti-hub/DataPipeline"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white transition-colors flex items-center gap-1"

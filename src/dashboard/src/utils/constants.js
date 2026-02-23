@@ -47,6 +47,8 @@ export const KPI_CONFIG = {
     good: 0.95,
     warn: 0.85,
     icon: "shield",
+    description:
+      "Ratio of actual staff on-site to the scheduled requirement. A score of 1.0 (100%) means every scheduled slot was filled. Below 0.85 is critical understaffing; above 1.05 indicates overstaffing.",
   },
   total_overtime_hours_30d: {
     label: "Overtime Hours (30d)",
@@ -54,7 +56,9 @@ export const KPI_CONFIG = {
     good: 800,
     warn: 1500,
     icon: "clock",
-    invertThreshold: true, // lower is better
+    invertThreshold: true,
+    description:
+      "Total overtime hours logged across all locations in the past 30 days. Lower is better. High overtime signals chronic understaffing and increases labor costs by 1.5x the base rate.",
   },
   avg_cost_per_visit: {
     label: "Avg Cost / Visit",
@@ -63,6 +67,8 @@ export const KPI_CONFIG = {
     warn: 50,
     icon: "dollar",
     invertThreshold: true,
+    description:
+      "Average labor cost divided by total patient visits. This measures workforce efficiency - how much labor spend is required to serve each patient. The $45 benchmark represents the industry target.",
   },
   shift_gap_rate: {
     label: "Shift Gap Rate",
@@ -71,6 +77,8 @@ export const KPI_CONFIG = {
     warn: 0.2,
     icon: "alert",
     invertThreshold: true,
+    description:
+      "Percentage of scheduled shifts that had fewer staff than required. A gap occurs when actual headcount falls below the minimum staffing threshold for a shift window. Lower is better.",
   },
   avg_wait_time: {
     label: "Avg Wait Time",
@@ -79,11 +87,15 @@ export const KPI_CONFIG = {
     warn: 30,
     icon: "timer",
     invertThreshold: true,
+    description:
+      "Average patient wait time in minutes from check-in to provider contact. Directly correlated with staffing levels - understaffed locations have longer waits. Target is under 20 minutes.",
   },
   total_patient_visits_30d: {
     label: "Patient Visits (30d)",
     format: "integer",
     icon: "users",
+    description:
+      "Total patient visits across all locations in the past 30 days. This is a volume indicator that drives staffing needs. Higher volumes require proportionally more staff to maintain coverage.",
   },
 };
 
@@ -107,6 +119,7 @@ export const NAV_LINKS = [
   { path: "/", label: "Home" },
   { path: "/architecture", label: "Architecture" },
   { path: "/dashboard", label: "Staffing Dashboard" },
+  { path: "/about-dashboard", label: "About Dashboard" },
   { path: "/data-quality", label: "Data Quality" },
   { path: "/sql-showcase", label: "SQL Showcase" },
   { path: "/how-i-built-this", label: "How I Built This" },

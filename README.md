@@ -1,4 +1,4 @@
-# WellNow Staffing Analytics
+# Healthcare Staffing Analytics
 
 **People Analytics Data Pipeline — Multi-Location Workforce Staffing & Coverage Optimization**
 
@@ -9,7 +9,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Cost: $0/month](https://img.shields.io/badge/Cost-%240%2Fmonth-brightgreen.svg)](#cost)
 
-A production-grade data pipeline and interactive dashboard for **WellNow Urgent Care** staffing optimization, built as a proof-of-concept for the Senior Analyst, Data & Insights role at **TAG — The Aspen Group**.
+A production-grade data pipeline and interactive dashboard for multi-location healthcare staffing optimization, built as a proof-of-concept for the Senior Analyst, Data & Insights role.
 
 **Author:** Kriti Srivastava
 
@@ -80,8 +80,8 @@ graph LR
 
 ```bash
 # Clone the repository
-git clone https://github.com/kriti-srivastava/wellnow-staffing-analytics.git
-cd wellnow-staffing-analytics
+git clone https://github.com/kriti-hub/DataPipeline.git
+cd DataPipeline
 
 # Copy environment variables
 cp .env.example .env
@@ -125,7 +125,7 @@ make deploy-etl
 bash infrastructure/scripts/setup_scheduler.sh
 
 # 7. Trigger first pipeline run manually
-gcloud scheduler jobs run wellnow-etl-daily --location=us-central1
+gcloud scheduler jobs run staffing-etl-daily --location=us-central1
 
 # 8. Deploy dashboard to Vercel
 make deploy-dashboard
@@ -134,7 +134,7 @@ make deploy-dashboard
 ## Project Structure
 
 ```
-wellnow-staffing-analytics/
+DataPipeline/
 ├── src/
 │   ├── api/          # Simulated HRIS API (FastAPI, independently deployable)
 │   ├── etl/          # ETL pipeline (Python, independently deployable)
@@ -186,5 +186,5 @@ wellnow-staffing-analytics/
 
 ---
 
-*Built for TAG — The Aspen Group | WellNow Urgent Care*
+*Built as a People Analytics Portfolio Project*
 *All data is synthetic — no real patient or employee information*

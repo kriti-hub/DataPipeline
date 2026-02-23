@@ -181,7 +181,7 @@ export default function HowIBuiltThis() {
           Full codebase, documentation, and infrastructure scripts on GitHub
         </p>
         <a
-          href="https://github.com/kriti-srivastava/DataPipeline"
+          href="https://github.com/kriti-hub/DataPipeline"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-xl font-semibold hover:bg-gray-800 transition-colors"

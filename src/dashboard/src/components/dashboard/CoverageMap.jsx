@@ -10,6 +10,8 @@ import {
 } from "recharts";
 import { COVERAGE_COLORS, REGION_COLORS } from "../../utils/constants";
 import { formatPercent, formatNumber } from "../../utils/formatters";
+import InfoTooltip from "../ui/InfoTooltip";
+import KeyTakeaway from "../ui/KeyTakeaway";
 
 function getCoverageColor(coverage) {
   if (coverage < 0.85) return COVERAGE_COLORS.critical;
@@ -48,8 +50,15 @@ export default function CoverageMap({ data }) {
 
   return (
     <div className="card p-5">
-      <h3 className="text-lg font-semibold text-gray-900 mb-1">Staffing Coverage Map</h3>
-      <p className="text-sm text-gray-500 mb-4">Bubble size = patient volume, color = coverage score</p>
+      <div className="flex items-center gap-2 mb-1">
+        <h3 className="text-lg font-semibold text-gray-900">Staffing Coverage Map</h3>
+        <InfoTooltip text="Each bubble represents a location. Size indicates patient volume and color shows coverage score. Red means critically understaffed (<85%), amber is warning (85-94%), green is good (95-105%), and blue is overstaffed (>105%)." />
+      </div>
+      <p className="text-sm text-gray-500 mb-3">Bubble size = patient volume, color = coverage score</p>
+      <KeyTakeaway
+        insight="Identify locations with red or amber bubbles that have high patient volume - these need immediate staffing attention."
+        recommendation="Prioritize float staff deployment to large, critically understaffed locations to reduce patient wait times and gap rates."
+      />
       <div className="flex flex-wrap gap-3 mb-4">
         {Object.entries(COVERAGE_COLORS).map(([key, color]) => (
           <div key={key} className="flex items-center gap-1.5 text-xs text-gray-600">

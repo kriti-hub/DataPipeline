@@ -1,7 +1,7 @@
 [
   {
     "run_id": "run-e5422c624188",
-    "pipeline_name": "wellnow_staffing_etl",
+    "pipeline_name": "staffing_etl",
     "started_at": "2026-02-22T22:09:40.820215+00:00",
     "completed_at": "2026-02-22T22:09:50.988453+00:00",
     "status": "Success",

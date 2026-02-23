@@ -97,7 +97,7 @@ export default function Architecture() {
         </div>
         <div className="mt-4 p-3 bg-green-50 rounded-lg border border-green-200">
           <p className="text-sm text-green-800 font-medium">
-            Total Monthly Cost: $0 &mdash; fully within GCP Free Tier
+            Total Monthly Cost: $0 - fully within GCP Free Tier
           </p>
         </div>
       </div>

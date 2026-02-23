@@ -1,5 +1,6 @@
 import { KPI_CONFIG } from "../../utils/constants";
 import { formatKPI } from "../../utils/formatters";
+import InfoTooltip from "../ui/InfoTooltip";
 
 const ICONS = {
   shield: (
@@ -55,7 +56,10 @@ export default function KPICard({ metricKey, value }) {
   return (
     <div className="card p-5 flex flex-col">
       <div className="flex items-center justify-between mb-3">
-        <span className="text-sm font-medium text-gray-500">{config.label}</span>
+        <div className="flex items-center gap-1.5">
+          <span className="text-sm font-medium text-gray-500">{config.label}</span>
+          {config.description && <InfoTooltip text={config.description} />}
+        </div>
         <div className={`p-2 rounded-lg ${statusColor}`}>
           {ICONS[config.icon]}
         </div>

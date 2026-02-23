@@ -1,4 +1,6 @@
 import { useMemo } from "react";
+import InfoTooltip from "../ui/InfoTooltip";
+import KeyTakeaway from "../ui/KeyTakeaway";
 
 function getPriorityBadge(priority) {
   if (priority <= 3)
@@ -54,8 +56,15 @@ export default function FloatDeploymentTable({ gapData, coverageData }) {
 
   return (
     <div className="card p-5">
-      <h3 className="text-lg font-semibold text-gray-900 mb-1">Float Deployment Planner</h3>
-      <p className="text-sm text-gray-500 mb-4">Recommended actions based on shift gap analysis</p>
+      <div className="flex items-center gap-2 mb-1">
+        <h3 className="text-lg font-semibold text-gray-900">Float Deployment Planner</h3>
+        <InfoTooltip text="Priority-ranked table of locations needing float (temporary) staff. Rankings are based on total gap hours, gap rate, and worst-performing day of week. Recommended actions range from immediate ASAP deployment to monitoring with PRN backfill." />
+      </div>
+      <p className="text-sm text-gray-500 mb-3">Recommended actions based on shift gap analysis</p>
+      <KeyTakeaway
+        insight="Top 3 priority locations account for the majority of understaffed shift hours, each needing immediate float deployment."
+        recommendation="Deploy float clinicians to red-flagged locations immediately. For amber locations, schedule coverage on their worst day to prevent escalation."
+      />
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead>

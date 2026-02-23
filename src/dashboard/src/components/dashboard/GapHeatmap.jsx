@@ -1,5 +1,7 @@
 import { useMemo } from "react";
 import { DOW_LABELS } from "../../utils/constants";
+import InfoTooltip from "../ui/InfoTooltip";
+import KeyTakeaway from "../ui/KeyTakeaway";
 
 function getHeatColor(frequency) {
   if (frequency >= 0.15) return "bg-red-500 text-white";
@@ -45,8 +47,15 @@ export default function GapHeatmap({ data, coverageData }) {
 
   return (
     <div className="card p-5">
-      <h3 className="text-lg font-semibold text-gray-900 mb-1">Understaffing Hot Spots</h3>
-      <p className="text-sm text-gray-500 mb-4">Gap frequency by location and day of week (top 20)</p>
+      <div className="flex items-center gap-2 mb-1">
+        <h3 className="text-lg font-semibold text-gray-900">Understaffing Hot Spots</h3>
+        <InfoTooltip text="Heatmap showing the percentage of shifts that were understaffed at each location by day of week. Darker red cells indicate higher gap frequency, meaning more shifts fell below minimum staffing thresholds." />
+      </div>
+      <p className="text-sm text-gray-500 mb-3">Gap frequency by location and day of week (top 20)</p>
+      <KeyTakeaway
+        insight="Weekend shifts (Sat/Sun) and Monday mornings consistently show the highest gap rates across top locations."
+        recommendation="Adjust scheduling templates to increase weekend staffing. Consider incentive pay for weekend shifts to reduce gap frequency."
+      />
       <div className="overflow-x-auto">
         <table className="w-full text-xs">
           <thead>

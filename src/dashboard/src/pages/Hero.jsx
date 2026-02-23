@@ -30,7 +30,7 @@ export default function Hero() {
         <div className="pt-20 pb-16 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-brand-200 text-sm font-medium mb-6 backdrop-blur-sm border border-white/10">
             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            Live Pipeline &mdash; Running Daily on GCP
+            Live Pipeline - Running Daily on GCP
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
@@ -42,7 +42,7 @@ export default function Hero() {
           <p className="mt-6 text-lg sm:text-xl text-brand-200 max-w-3xl mx-auto leading-relaxed">
             I built a live data pipeline that turns HRIS and scheduling data into
             actionable staffing intelligence for multi-location healthcare
-            operations &mdash; the same infrastructure this role requires.
+            operations - the same infrastructure this role requires.
           </p>
 
           <div className="mt-4 text-brand-300 font-medium text-lg">
@@ -64,7 +64,7 @@ export default function Hero() {
               View Architecture
             </Link>
             <a
-              href="https://github.com/kriti-srivastava/DataPipeline"
+              href="https://github.com/kriti-hub/DataPipeline"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 bg-white/10 text-white font-semibold rounded-xl hover:bg-white/20 transition-all backdrop-blur-sm border border-white/20 text-sm sm:text-base flex items-center gap-2"

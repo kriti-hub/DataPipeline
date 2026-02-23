@@ -9,6 +9,8 @@ import {
   ReferenceLine,
 } from "recharts";
 import { formatCurrency, formatMonthLabel } from "../../utils/formatters";
+import InfoTooltip from "../ui/InfoTooltip";
+import KeyTakeaway from "../ui/KeyTakeaway";
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (!active || !payload?.length) return null;
@@ -34,8 +36,15 @@ export default function LaborCostTrend({ data }) {
 
   return (
     <div className="card p-5">
-      <h3 className="text-lg font-semibold text-gray-900 mb-1">Labor Cost Per Visit Trend</h3>
-      <p className="text-sm text-gray-500 mb-4">Monthly cost per visit vs. ${benchmark} benchmark target</p>
+      <div className="flex items-center gap-2 mb-1">
+        <h3 className="text-lg font-semibold text-gray-900">Labor Cost Per Visit Trend</h3>
+        <InfoTooltip text="Tracks the monthly average labor cost divided by patient visits. The red dashed line shows the $45 industry benchmark. Points above the line indicate inefficiency - you're spending more labor per patient than target." />
+      </div>
+      <p className="text-sm text-gray-500 mb-3">Monthly cost per visit vs. ${benchmark} benchmark target</p>
+      <KeyTakeaway
+        insight="Labor cost per visit shows seasonal variation, typically rising during holiday months when overtime increases and visit volume dips."
+        recommendation="Plan seasonal staffing adjustments 6-8 weeks ahead. Use part-time or PRN staff during low-volume periods to keep cost-per-visit near the $45 target."
+      />
       <ResponsiveContainer width="100%" height={320}>
         <LineChart data={chartData} margin={{ top: 5, right: 20, bottom: 5, left: 10 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
