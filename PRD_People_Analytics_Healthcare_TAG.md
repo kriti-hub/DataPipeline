@@ -1560,7 +1560,7 @@ PROMPT — PHASE 4 POLISH:
 
 Everything works. Now make it portfolio-ready:
 
-1. README.md — First impression for hiring managers:
+1. README.md:
    - Architecture diagram (Mermaid)
    - Live demo link
    - Tech stack badges
