@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import Navigation from "./components/layout/Navigation";
 import Footer from "./components/layout/Footer";
 import AppRoutes from "./routes";
@@ -8,6 +9,7 @@ export default function App() {
       <Navigation />
       <AppRoutes />
       <Footer />
+      <Analytics />
     </div>
   );
 }
